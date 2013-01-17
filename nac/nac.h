@@ -34,13 +34,6 @@ public:
     void updateFisher(const cv::Mat& ps, const cv::Mat& vs, float reward, bool fisherFlag);
     void evalPol(const cv::Mat& ps);
     // high level exploring functions
-    void train(MatL& miu, MatL& pmiu, MatL& cov, cv::Mat& evarBinary, cv::Mat& mask, cv::Mat& dispImg, 
-        cv::Mat& kernel, cv::Mat& lrw, cv::Mat& action, cv::Mat& ps, cv::Mat& vs, MatL& kpData, int tidx, 
-        int nFrame, int exploreIter, int kDim, int yDim, int maskVal, float epsilon, tracker& t, 
-        gmem& gm, fio& fileIO);
-    void test(MatL& miu, MatL& pmiu, MatL& cov, cv::Mat& evarBinary, cv::Mat& mask, cv::Mat& dispImg, 
-        cv::Mat& kernel, cv::Mat& lrw, cv::Mat& action, cv::Mat& ps, MatL& kpData, int tidx, int nFrame, 
-        int maskVal, int xDim, tracker& t, gmem& gm, fio& fileIO);
     // low level exploring functions
     void genAction(bool exploreFlag, std::mt19937& engine);
     void act(MatL& miuL, MatL& pmiuL, MatL& covL, cv::Mat& _action, int tidx, bool exploreFlag, 
@@ -55,24 +48,6 @@ public:
             float r, int count);
     void recordDataByElement(cv::Mat& rwd, cv::Mat& pwn, cv::Mat& vwn, cv::Mat& ngwn, cv::Mat& val, 
             cv::Mat& td, float r, int count);
-    // unused nonlinear functions
-    void initNonLinear(int _nvI, int _npI, int _nvH, int _nvY, int _npH, int _npY, float _alpha,
-            float _beta, float _gamma, float _wr);
-    void updateNonLinear(const cv::Mat& policyState, const cv::Mat& valueState, float reward);
-    void updateFisherNonLinear(const cv::Mat& ps, const cv::Mat& vs, float reward, bool fisherFlag);
-    void evalPolNonLinear(const cv::Mat& s);
-    void resetEllipseNonLinear(MatL& miuL, MatL& covL, const cv::Mat& ps, tlnn& net, tracker& t, int tidx);
-    void recordDiagnosisNonLinear(cv::Mat& rwd, cv::Mat& pwn, cv::Mat& pvn, cv::Mat& vwn, cv::Mat& vvn, 
-            cv::Mat& ngwn, cv::Mat& ngvn, cv::Mat& val, cv::Mat& td, float r, int count);
-    void copyPwNonLinear(tlnn& net);
-    void trainNonLinear(MatL& miu, MatL& pmiu, MatL& cov, cv::Mat& evarBinary, cv::Mat& mask, cv::Mat& dispImg, 
-        cv::Mat& prop, cv::Mat& action, cv::Mat& ps, cv::Mat& vs, MatL& kpData, int tidx, int nFrame,
-        int exploreIter, int xDim, int tDim, int maskVal, float epsilon, tracker& t, gmem& gm, fio& fileIO,
-        tlnn& net);
-    void testNonLinear(MatL& miu, MatL& pmiu, MatL& cov, cv::Mat& evarBinary, cv::Mat& mask, cv::Mat& dispImg, 
-        cv::Mat& prop, cv::Mat& action, cv::Mat& ps, MatL& kpData, int tidx, int nFrame, int maskVal, int xDim,  
-        tracker& t, gmem& gm, fio& fileIO, tlnn& net);
-    
 };
 
 #endif
