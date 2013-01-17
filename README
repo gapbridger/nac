@@ -1,0 +1,5 @@
+implementation of natural actor critic algorithm in 2009 technical report from university of alberta using opencv as linear algebra library
+
+currently based on gaussian policy
+
+will try to expand it later
